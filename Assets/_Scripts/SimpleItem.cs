@@ -16,13 +16,4 @@ public class SimpleItem : Item
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("e") && insideItemCollider)
-        {
-            Interaction();
-        }
-    }
 }

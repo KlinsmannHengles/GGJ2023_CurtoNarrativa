@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+public abstract class GenericNPCBehaviour : MonoBehaviour
 {
+
     public bool insideItemCollider = false; // if you are in the collision of the object
 
     // Start is called before the first frame update
