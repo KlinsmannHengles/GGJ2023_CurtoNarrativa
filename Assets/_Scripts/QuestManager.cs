@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class QuestManager : MonoBehaviour
 {
 
-    public static GameManager Instance { get; private set; }
+    public static QuestManager Instance { get; private set; }
+
+    public Quest[] quests;
 
     private void Awake()
     {
+
         // If there is an instance, and it's not me, delete myself
         if (Instance != null && Instance != this)
         {
@@ -31,7 +34,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-    
-
 }
