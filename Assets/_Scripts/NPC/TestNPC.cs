@@ -19,9 +19,6 @@ public class TestNPC : GenericNPCBehaviour
         // Trigger dialogue
         DialogueManager.Instance.GetComponent<DialogueTrigger>().TriggerDialogue();
 
-        // Display sentence
-        DialogueManager.Instance.DisplayNextSentence();
-
     }
 
     public void FirstInteraction()
