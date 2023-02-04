@@ -16,6 +16,9 @@ public class DialogueManager : MonoBehaviour
 
     public PlayerMovement playerMovement;
 
+    public Animator animator_BottonBox;
+    public Animator animator_UpBox;
+
     [Header("DialogueUI")]
     public GameObject protagonistDialogueBox;
     public GameObject npcDialogueBox;
@@ -46,6 +49,10 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
 
+        // I can change it to make just open the botton or the up
+        animator_BottonBox.SetBool("IsOpen", true);
+        animator_UpBox.SetBool("IsOpen", true);
+
         playerMovement.moveSpeed = 0f;
 
         conversationIsHappening = true;
@@ -72,14 +79,30 @@ public class DialogueManager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
 
-        // CHANGE IT TO A IF WITH THE TWO DIALOGUE BOXES
-        DialogueManager.Instance.npcDialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence (string sentence)
+    {
+        
+        npcDialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            // CHANGE IT TO A IF WITH THE TWO DIALOGUE BOXES
+            npcDialogueText.text += letter;
+            yield return new WaitForSeconds(0.03f);
+        }
     }
 
     void EndDialogue()
     {
         // CHANGE IT TO A IF WITH THE TWO DIALOGUE BOXES
         DialogueManager.Instance.npcDialogueBox.SetActive(false);
+
+        // I CAN CHANGE IT TO CHANGE JUST THE BOTTON OR THE UP
+        animator_BottonBox.SetBool("IsOpen", false);
+        animator_UpBox.SetBool("IsOpen", false);
 
         conversationIsHappening = false;
 
