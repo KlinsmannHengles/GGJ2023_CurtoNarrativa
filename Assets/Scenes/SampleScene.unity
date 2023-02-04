@@ -865,11 +865,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - name: 0
+    whoSpeak: 1
     sentences:
     - Hello
     - My name is Name
     - I am the best NPC here
   - name: 1
+    whoSpeak: 0
     sentences:
     - Jon
     - Snow

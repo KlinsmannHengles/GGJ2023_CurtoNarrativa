@@ -49,9 +49,20 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
 
-        // I can change it to make just open the botton or the up
+        /*// I can change it to make just open the botton or the up
         animator_BottonBox.SetBool("IsOpen", true);
-        animator_UpBox.SetBool("IsOpen", true);
+        animator_UpBox.SetBool("IsOpen", true);*/
+
+        if (dialogue.whoSpeak == WhoSpeak.NPC)
+        {
+            animator_UpBox.SetBool("IsOpen", true);
+        } else if (dialogue.whoSpeak == WhoSpeak.PLAYER)
+        {
+            animator_BottonBox.SetBool("IsOpen", true);
+        } else
+        {
+            Debug.Log("I don't  know who speaks in StartDialogue() in DialogueManager()");
+        }
 
         playerMovement.moveSpeed = 0f;
 
@@ -66,10 +77,10 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        DisplayNextSentence(dialogue.whoSpeak);
     }
 
-    public void DisplayNextSentence()
+    public void DisplayNextSentence(WhoSpeak _whoSpeak)
     {
         if (sentences.Count == 0)
         {
@@ -80,25 +91,47 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
 
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(TypeSentence(_whoSpeak, sentence));
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence (WhoSpeak _whoSpeak, string sentence)
     {
-        
-        npcDialogueText.text = "";
+        if (_whoSpeak == WhoSpeak.NPC)
+        {
+            npcDialogueText.text = "";
+        }
+        else if (_whoSpeak == WhoSpeak.PLAYER)
+        {
+            protagonistDialogueText.text = "";
+        }
+        else
+        {
+            Debug.Log("I don't know who is speaking in TypeSentence()");
+        }
+
+
         foreach (char letter in sentence.ToCharArray())
         {
-            // CHANGE IT TO A IF WITH THE TWO DIALOGUE BOXES
-            npcDialogueText.text += letter;
-            yield return new WaitForSeconds(0.03f);
+            if (_whoSpeak == WhoSpeak.NPC)
+            {
+                npcDialogueText.text += letter;
+                yield return new WaitForSeconds(0.03f);
+            } else if (_whoSpeak == WhoSpeak.PLAYER)
+            {
+                protagonistDialogueText.text += letter;
+                yield return new WaitForSeconds(0.03f);
+            } else
+            {
+                Debug.Log("I don't know who is speaking in TypeSentence()");
+            }
         }
     }
 
     void EndDialogue()
     {
-        // CHANGE IT TO A IF WITH THE TWO DIALOGUE BOXES
+        // Disable both Dialogue Boxes
         DialogueManager.Instance.npcDialogueBox.SetActive(false);
+        DialogueManager.Instance.protagonistDialogueBox.SetActive(false);
 
         // I CAN CHANGE IT TO CHANGE JUST THE BOTTON OR THE UP
         animator_BottonBox.SetBool("IsOpen", false);
