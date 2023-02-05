@@ -127,7 +127,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         // Disable both Dialogue Boxes
         DialogueManager.Instance.npcDialogueBox.SetActive(false);
