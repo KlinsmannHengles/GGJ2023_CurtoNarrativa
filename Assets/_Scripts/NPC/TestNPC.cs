@@ -10,6 +10,15 @@ public class TestNPC : GenericNPCBehaviour
         if (DialogueManager.Instance.conversationIsHappening)
         {
             DialogueManager.Instance.DisplayNextSentence(DialogueTrigger.Instance.dialogue[DialogueManager.Instance.actualDialogue].whoSpeak);
+            //print("INTERACTION WhoSpeak: " + DialogueTrigger.Instance.dialogue[DialogueManager.Instance.actualDialogue].whoSpeak);
+
+            if (DialogueManager.Instance.actualSentence + 1 >= DialogueTrigger.Instance.dialogue[DialogueManager.Instance.actualDialogue].sentences.Length)
+            { 
+                if (DialogueManager.Instance.actualDialogue < DialogueTrigger.Instance.dialogue.Length)
+                    // Comment it to maintain the actual dialogue repeating;
+                    DialogueManager.Instance.actualDialogue++;
+            }
+
             return;
         }
 
@@ -32,10 +41,12 @@ public class TestNPC : GenericNPCBehaviour
         // Trigger dialogue
         DialogueManager.Instance.GetComponent<DialogueTrigger>().TriggerDialogue();
 
-        if (DialogueManager.Instance.actualDialogue < DialogueTrigger.Instance.dialogue.Length)
+        /*if (DialogueManager.Instance.actualDialogue == DialogueTrigger.Instance.dialogue.Length)
         {
             DialogueManager.Instance.actualDialogue++;
-        }
+        }*/
+
+        
 
     }
 

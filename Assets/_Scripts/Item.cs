@@ -17,6 +17,7 @@ public abstract class Item : MonoBehaviour
     {
         if (Input.GetKeyDown("e") && insideItemCollider)
         {
+            Debug.Log("calling interaction");
             Interaction();
         }
     }

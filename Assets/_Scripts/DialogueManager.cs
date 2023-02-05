@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public bool conversationIsHappening = false;
 
     public int actualDialogue = 0;
+    public int actualSentence = 0;
 
     public PlayerMovement playerMovement;
 
@@ -112,6 +113,8 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char letter in sentence.ToCharArray())
         {
+            //Debug.Log("WhoSpeak: " + _whoSpeak);
+            //Debug.Log("Sentence: " + sentence);
             if (_whoSpeak == WhoSpeak.NPC)
             {
                 npcDialogueText.text += letter;
@@ -125,6 +128,7 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("I don't know who is speaking in TypeSentence()");
             }
         }
+        actualSentence++;
     }
 
     public void EndDialogue()
@@ -138,6 +142,8 @@ public class DialogueManager : MonoBehaviour
         animator_UpBox.SetBool("IsOpen", false);
 
         conversationIsHappening = false;
+
+        actualSentence = 0;
 
         playerMovement.moveSpeed = 5f;
 

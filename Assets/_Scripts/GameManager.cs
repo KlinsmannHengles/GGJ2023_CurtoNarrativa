@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance { get; private set; }
+
+    public Light2D globalLight;
 
     private void Awake()
     {
