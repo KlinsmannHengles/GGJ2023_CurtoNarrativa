@@ -443,7 +443,7 @@ MonoBehaviour:
   - name: "Jos\xE9"
     whoSpeak: 0
     sentences:
-    - "N\xE3o tenho uma boa not\xEDcia\u2026 Mam\xE3e e papai, se foram\u2026"
+    - "N\xE3o tenho uma boa not\xEDcia\u2026 Mam\xE3e e papai se foram\u2026"
 --- !u!114 &644820740
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,6 +32,11 @@ public class TestNPC : GenericNPCBehaviour
         // Trigger dialogue
         DialogueManager.Instance.GetComponent<DialogueTrigger>().TriggerDialogue();
 
+        if (DialogueManager.Instance.actualDialogue < DialogueTrigger.Instance.dialogue.Length)
+        {
+            DialogueManager.Instance.actualDialogue++;
+        }
+
     }
 
     public void FirstInteraction()

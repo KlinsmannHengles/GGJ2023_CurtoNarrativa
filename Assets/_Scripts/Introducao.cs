@@ -27,15 +27,12 @@ public class Introducao : MonoBehaviour
        {
             telefone.SetActive(false);
             pressE.text = "";
-               // If the conversation already started and we just need to change the sentences
+             // If the conversation already started and we just need to change the sentences
             if (DialogueManager.Instance.conversationIsHappening)
             {
                 DialogueManager.Instance.DisplayNextSentence(DialogueTrigger.Instance.dialogue[DialogueManager.Instance.actualDialogue].whoSpeak);
-                return;
+                //return;
             }
-
-            //enable NPC dialogue box
-            //DialogueManager.Instance.npcDialogueBox.SetActive(true);
 
             if (DialogueTrigger.Instance.dialogue[DialogueManager.Instance.actualDialogue].whoSpeak == WhoSpeak.NPC)
             {
