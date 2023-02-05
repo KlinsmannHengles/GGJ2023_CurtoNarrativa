@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class Quest
+public class Quest
 {
     public string name;
 
     public GameObject[] items;
 
-    public abstract void IsAbleToFinish();
+    public void IsAbleToFinish()
+    {
+
+    }
 }
