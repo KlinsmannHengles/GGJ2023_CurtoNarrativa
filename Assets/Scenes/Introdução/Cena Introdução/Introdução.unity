@@ -431,19 +431,19 @@ MonoBehaviour:
   - name: Anna
     whoSpeak: 1
     sentences:
-    - "Al\xF4?!"
-  - name: "Jos\xE9"
+    - Hello?!
+  - name: Joseph
     whoSpeak: 0
     sentences:
-    - "Anna, sou eu, seu irm\xE3o, Jos\xE9."
+    - Anna, it's me, your brother, Joseph.
   - name: Anna
     whoSpeak: 1
     sentences:
-    - "Oi, Jos\xE9. H\xE1 quanto tempo! Tudo bem?"
-  - name: "Jos\xE9"
+    - "\rHi Joseph. How long! All good?"
+  - name: Joseph
     whoSpeak: 0
     sentences:
-    - "N\xE3o tenho uma boa not\xEDcia\u2026 Mam\xE3e e papai se foram\u2026"
+    - "\rI don't have good news... Mom and Dad are gone..."
 --- !u!114 &644820740
 MonoBehaviour:
   m_ObjectHideFlags: 0

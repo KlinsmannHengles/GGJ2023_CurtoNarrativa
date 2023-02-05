@@ -61,7 +61,7 @@ public class Introducao : MonoBehaviour
     IEnumerator Wait ()
     {
         yield return new WaitForSeconds(3f);
-        pressE.text = "Pressione E para atender";
+        pressE.text = "Press E to answer";
         
     }
 
