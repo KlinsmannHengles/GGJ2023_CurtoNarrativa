@@ -26,7 +26,7 @@ public class Introducao : MonoBehaviour
        if (Input.GetKeyDown("e") && DialogueManager.Instance.actualDialogue < DialogueTrigger.Instance.dialogue.Length)
        {
             telefone.SetActive(false);
-            pressE.text = "";
+            pressE.text = "Press E to contiune";
              // If the conversation already started and we just need to change the sentences
             if (DialogueManager.Instance.conversationIsHappening)
             {
